@@ -209,7 +209,7 @@ class UserActionController implements ContainerInjectionInterface {
     $this->killSwitch->trigger();
     if (isset($_COOKIE['cas_tgc'])) {
       unset($_COOKIE['cas_tgc']);
-      setcookie('cas_tgc', '', REQUEST_TIME - 3600, '/cas');
+      setcookie('cas_tgc', '', \Drupal::time()->getRequestTime() - 3600, '/cas');
     }
     $session_id = $this->sessionManager->getId();
     $hashed_id = Crypt::hashBase64($session_id);
@@ -245,7 +245,7 @@ class UserActionController implements ContainerInjectionInterface {
         return FALSE;
       }
 
-      if (REQUEST_TIME > $tgt->getExpirationTime()) {
+      if (\Drupal::time()->getRequestTime() > $tgt->getExpirationTime()) {
         $this->ticketStore->deleteTicketGrantingTicket($tgt);
         return FALSE;
       }

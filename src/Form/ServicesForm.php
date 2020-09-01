@@ -107,12 +107,12 @@ class ServicesForm extends EntityForm {
     $status = $service->save();
 
     if ($status) {
-      drupal_set_message($this->t('Saved the %label Service.', array(
+      $this->messenger()->addStatus($this->t('Saved the %label Service.', array(
         '%label' => $service->getLabel(),
       )));
     }
     else {
-      drupal_set_message($this->t('The %label Service was not saved.', array(
+      $this->messenger()->addStatus($this->t('The %label Service was not saved.', array(
         '%label' => $service->getLabel(),
       )));
     }

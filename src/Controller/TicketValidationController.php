@@ -207,7 +207,7 @@ class TicketValidationController implements ContainerInjectionInterface {
       }
 
       // Check expiration time against request time.
-      if (REQUEST_TIME > $ticket->getExpirationTime()) {
+      if (\Drupal::time()->getRequestTime() > $ticket->getExpirationTime()) {
         $this->logger->log("Failed to validate ticket: $ticket_string. Ticket had expired.");
         return $this->generateTicketExpiredResponse($validation_type, $format, $ticket);
       }

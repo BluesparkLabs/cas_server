@@ -122,7 +122,7 @@ class ProxyController implements ContainerInjectionInterface {
         return $this->generateInternalErrorRequestResponse($format, 'Ticket not found');
       }
 
-      if (REQUEST_TIME > $ticket->getExpirationTime()) {
+      if (\Drupal::time()->getRequestTime() > $ticket->getExpirationTime()) {
         $this->logger->log("Failed to validate ticket: $pgt. Ticket had expired.");
         return $this->generateTicketExpiredRequestResponse($format, $pgt);
       }
