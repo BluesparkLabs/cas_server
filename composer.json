@@ -2,10 +2,6 @@
     "name": "drupal/cas_server",
     "type": "drupal-module",
     "description": "Cas server",
-    "version": "2.0.0-beta1"
     "homepage": "http://drupal.org/project/cas_server",
-    "license": "GPL-2.0+",
-    "require": {
-        "drupal/core": "^8.7.7 || ^9"
-    }
+    "license": "GPL-2.0+"
 }
